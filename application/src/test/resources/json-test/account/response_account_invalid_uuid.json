@@ -1,0 +1,5 @@
+{
+  "code": 400,
+  "message": "getAccount.accountId: UUID Invalid",
+  "time": "2022-04-10T14:20:36.235373959"
+}

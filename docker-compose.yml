@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  db-postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "admin123"
+    ports:
+      - "15432:5432"
+    volumes:
+      - /home/oem/projetos_dev/demo-postgres/infra-docker/data
+    networks:
+      - app-network
+#  api_transaction:
+#    build: .
+#    restart: always
+#    ports:
+#      - "8181:8181"
+#    depends_on:
+#      - postgres_db
+volumes:
+  database-data:
+
+networks:
+  app-network:
+    driver: bridge
+
