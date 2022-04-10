@@ -11,13 +11,13 @@ services:
       - /home/oem/projetos_dev/demo-postgres/infra-docker/data
     networks:
       - app-network
-#  api_transaction:
-#    build: .
-#    restart: always
-#    ports:
-#      - "8181:8181"
-#    depends_on:
-#      - postgres_db
+  api_transaction:
+    build: .
+    restart: always
+    ports:
+      - "8181:8181"
+    depends_on:
+      - db-postgres
 volumes:
   database-data:
 
