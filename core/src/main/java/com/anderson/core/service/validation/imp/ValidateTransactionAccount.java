@@ -24,20 +24,20 @@ public class ValidateTransactionAccount implements ValidateTransaction {
 
     }
 
-    private void validAccountInformed(Transaction transaction) {
+    protected void validAccountInformed(Transaction transaction) {
 
         log.info("Valid Account informed");
 
         Optional.ofNullable(transaction)
-                .orElseThrow(() -> new ConflictCustomException("Conflict \"Account\" don't informed "));
+                .orElseThrow(() -> new ConflictCustomException("Conflict \"Account\" don't informed"));
     }
 
-    private void validIfExist(Transaction transaction) {
+    protected void validIfExist(Transaction transaction) {
 
         log.info("Valid Account exist");
 
         repository.findBy(transaction.getAccountId()).orElseThrow(() -> {
-            throw new ConflictCustomException("Conflict \"Account\" don't exist in database ");
+            throw new ConflictCustomException("Conflict \"Account\" don't exist in database");
         });
 
     }

@@ -23,6 +23,7 @@ public class AccountServiceImp implements AccountService {
         log.info("Save account");
 
         validationAccountService.validate(account);
+
         Account accountSave = accountRepository.save(account);
 
         return accountSave;
@@ -30,11 +31,6 @@ public class AccountServiceImp implements AccountService {
 
     @Override
     public Optional<Account> findByID(String uuid) {
-        //// TODO: 08/04/2022
-
-
-        Optional<Account> optionalAccount = accountRepository.findBy(UUID.fromString(uuid));
-
-        return optionalAccount;
+        return accountRepository.findBy(UUID.fromString(uuid));;
     }
 }

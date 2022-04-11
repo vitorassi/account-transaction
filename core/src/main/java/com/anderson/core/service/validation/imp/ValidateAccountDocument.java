@@ -39,7 +39,7 @@ public class ValidateAccountDocument implements ValidateAccount {
                 .filter(document -> document != null && !document.equals(""))
                 .filter(document -> document.matches("[0-9]+"))
                 .orElseThrow(() ->
-                        new BadRequestCustomException("Invalid number document ")
+                        new BadRequestCustomException("Invalid number document")
                 );
     }
 }

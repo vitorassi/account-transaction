@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class CalculateTransactionServiceImp implements CalculateTransactionService {
 
+    private static final int SCALE_VALUE = 2;
     private final BigDecimal FACTOR_POSITIVE = BigDecimal.ONE;
     private final BigDecimal FACTOR_NEGATIVE = new BigDecimal("-1.00");
 
@@ -24,7 +25,9 @@ public class CalculateTransactionServiceImp implements CalculateTransactionServi
     public void calculate(Transaction transcation) {
 
         BigDecimal factory = factors.get(transcation.getOperation());
-        transcation.setAmount(transcation.getAmount().multiply(factory));
+        transcation.setAmount(transcation.getAmount()
+                .multiply(factory)
+                .setScale(SCALE_VALUE));
 
     }
 
