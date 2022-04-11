@@ -5,6 +5,7 @@
         <artifactId>account-transaction</artifactId>
         <groupId>com.anderson</groupId>
         <version>1.0.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>application</artifactId>
@@ -137,22 +138,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-
-            <!--            <plugin>-->
-            <!--                <groupId>org.springframework.boot</groupId>-->
-            <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-            <!--                <version>${spring.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <mainClass>com.anderson.application.AccountTransactionApplication</mainClass>-->
-            <!--                    <layout>JAR</layout>-->
-            <!--                    <excludes>-->
-            <!--                        <exclude>-->
-            <!--                            <groupId>org.projectlombok</groupId>-->
-            <!--                            <artifactId>lombok</artifactId>-->
-            <!--                        </exclude>-->
-            <!--                    </excludes>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
         </plugins>
     </build>
 

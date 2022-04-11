@@ -10,7 +10,7 @@ spring:
       write-enums-using-index: true
       write-enum-keys-using-index: true
   datasource:
-    jdbcUrl: jdbc:postgresql://localhost:15432/postgres
+    jdbcUrl: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:15432/postgres}
     driverClassName: org.postgresql.Driver
     username: postgres
     password: admin123
@@ -23,7 +23,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQL94Dialect
 
   flyway:
-    url: jdbc:postgresql://localhost:15432/postgres
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:15432/postgres}
     user: postgres
     password: admin123
     locations: classpath:db/migration/

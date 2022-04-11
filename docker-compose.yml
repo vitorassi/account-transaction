@@ -1,7 +1,8 @@
 version: "3.8"
 
 services:
-  db-postgres:
+  db_postgres:
+    container_name: db_postgres
     image: postgres
     environment:
       POSTGRES_PASSWORD: "admin123"
@@ -9,19 +10,18 @@ services:
       - "15432:5432"
     volumes:
       - /home/oem/projetos_dev/demo-postgres/infra-docker/data
-    networks:
-      - app-network
+
   api_transaction:
+    container_name: app_transaction
     build: .
     restart: always
     ports:
       - "8181:8181"
     depends_on:
-      - db-postgres
+      - db_postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_postgres:5432/postgres
+
 volumes:
   database-data:
-
-networks:
-  app-network:
-    driver: bridge
 
