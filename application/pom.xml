@@ -112,7 +112,6 @@
             <version>${commons-vesion}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
