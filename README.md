@@ -1,9 +1,6 @@
 # Read Me First
 
-The following was discovered as part of building this project:
-
-* The original package name 'com.anderson.account-transaction' is invalid and this project uses '
-  com.anderson.accounttransaction' instead.
+* Project to meet the requirements of the technical validation test for a job vacancy at the Pismo company.
 
 # Getting Started
 
@@ -25,22 +22,23 @@ For further reference, please consider the following sections:
 * [Template Method Pattern](https://refactoring.guru/design-patterns/template-method)
 * [Docker](https://docs.docker.com/)
 
-
 ## Guides
 
-
 #### Clone
+
 To clone this repository, execute the following in the command line:
+
 ```bash
 $ git clone https://github.com/vitorassi/account-transaction.git
 ```
 
 ### Installation required for compile
+
 * java 11
 * Maven
 * docker
 
-#### Execution 
+#### Execution
 
 Open directory the project and run maven command in script terminal
 
@@ -53,8 +51,21 @@ $ mvn clean install
 * docker
 
 #### Execution
+
 Open directory the project and run maven command in script terminal
 
 ```bash
 $ docker-compose up --build --force-recreate
 ```
+
+#### Open
+
+For test API route open the browser
+
+```bash
+http://localhost:8181/swagger-ui/index.html#
+```
+
+You must see this
+
+![img.png](img/img.png)

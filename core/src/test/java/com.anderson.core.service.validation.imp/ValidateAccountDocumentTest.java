@@ -28,21 +28,21 @@ class ValidateAccountDocumentTest {
     private ValidateAccountDocument validateAccountDocument;
 
     @BeforeEach
-    public void init(){
-       validateAccountDocument = new ValidateAccountDocument(accountRepository);
+    public void init() {
+        validateAccountDocument = new ValidateAccountDocument(accountRepository);
     }
 
 
     @Test
     @DisplayName("Test Account Number Success")
-    public void testAccountNumberSuccess(){
+    public void testAccountNumberSuccess() {
         try {
             Account account = Account.builder().id(UUID.randomUUID())
                     .documentNumber("1234").build();
 
             validateAccountDocument.validate(account);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }
@@ -50,16 +50,16 @@ class ValidateAccountDocumentTest {
 
     @Test
     @DisplayName("Test invalid account number")
-    public void testInvalidAccountNumber(){
+    public void testInvalidAccountNumber() {
         try {
             Account account = Account.builder().id(UUID.randomUUID())
                     .documentNumber("invalid").build();
             validateAccountDocument.validate(account);
 
             fail("Fail test");
-        }catch (BadRequestCustomException e){
+        } catch (BadRequestCustomException e) {
             Assertions.assertEquals("Invalid number document", e.getMessage());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }
@@ -67,11 +67,11 @@ class ValidateAccountDocumentTest {
 
     @Test
     @DisplayName("Test duplicate number account")
-    public void testDuplicateNumberAccount(){
+    public void testDuplicateNumberAccount() {
         try {
             when(accountRepository.findByDocument("1234"))
                     .thenReturn(Optional.of(Account.builder()
-                                    .id(UUID.randomUUID())
+                            .id(UUID.randomUUID())
                             .documentNumber("1234").build()));
 
             Account account = Account.builder().id(UUID.randomUUID())
@@ -80,9 +80,9 @@ class ValidateAccountDocumentTest {
             validateAccountDocument.validate(account);
 
             fail("Fail test");
-        }catch (ConflictCustomException e){
+        } catch (ConflictCustomException e) {
             Assertions.assertEquals("Conflict \"Account\" exist in database with document number informed", e.getMessage());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }

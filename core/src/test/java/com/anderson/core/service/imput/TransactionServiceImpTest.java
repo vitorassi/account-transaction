@@ -1,14 +1,11 @@
 package com.anderson.core.service.imput;
 
 
-import com.anderson.core.model.Account;
 import com.anderson.core.model.Operation;
 import com.anderson.core.model.Transaction;
-import com.anderson.core.port.input.AccountService;
 import com.anderson.core.port.input.TransactionService;
 import com.anderson.core.port.internal.CalculateTransactionService;
 import com.anderson.core.service.internal.Validation;
-import com.anderson.core.service.out.AccountRepository;
 import com.anderson.core.service.out.TransactionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,16 +35,16 @@ class TransactionServiceImpTest {
     private TransactionService transactionService;
 
     @BeforeEach
-    public void init(){
+    public void init() {
         transactionService = new TransactionServiceImp(transactionRepository, validation, calculateTransactionService);
     }
 
     @Test
-    public void testSave(){
+    public void testSave() {
         transactionService.save(Transaction.builder()
-                        .amount(new BigDecimal("1500.00"))
-                        .operation(Operation.SAQUE)
-                        .accountId(UUID.randomUUID())
+                .amount(new BigDecimal("1500.00"))
+                .operation(Operation.SAQUE)
+                .accountId(UUID.randomUUID())
                 .build());
         verify(validation, times(1)).validate(any(Transaction.class));
         verify(transactionRepository, times(1)).save(any(Transaction.class));

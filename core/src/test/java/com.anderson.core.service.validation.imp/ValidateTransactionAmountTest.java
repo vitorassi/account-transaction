@@ -1,20 +1,15 @@
 package com.anderson.core.service.validation.imp;
 
 import com.anderson.common.excpetion.BadRequestCustomException;
-import com.anderson.core.model.Account;
-import com.anderson.core.model.Operation;
 import com.anderson.core.model.Transaction;
-import com.anderson.core.service.out.AccountRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -25,13 +20,13 @@ class ValidateTransactionAmountTest {
     private ValidateTransactionAmount validateTransactionAmount;
 
     @BeforeEach
-    public void init(){
+    public void init() {
         validateTransactionAmount = new ValidateTransactionAmount();
     }
 
     @Test
     @DisplayName("Test Transaction amount Success")
-    public void testTransactionAmountSuccess(){
+    public void testTransactionAmountSuccess() {
         try {
 
             Transaction transaction = Transaction.builder()
@@ -40,7 +35,7 @@ class ValidateTransactionAmountTest {
 
             validateTransactionAmount.validate(transaction);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }
@@ -48,7 +43,7 @@ class ValidateTransactionAmountTest {
 
     @Test
     @DisplayName("Test Transaction amount invalid")
-    public void testTransactionAmountInvalid(){
+    public void testTransactionAmountInvalid() {
         try {
             Transaction transaction = Transaction.builder()
                     .amount(new BigDecimal("-150.00"))
@@ -56,9 +51,9 @@ class ValidateTransactionAmountTest {
 
             validateTransactionAmount.validate(transaction);
             fail("Fail test");
-        }catch (BadRequestCustomException e){
+        } catch (BadRequestCustomException e) {
             Assertions.assertEquals("Invalid Amount", e.getMessage());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }

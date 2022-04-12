@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,14 +29,14 @@ class ValidateTransactionAccountTest {
     private ValidateTransactionAccount validateTransactionAccount;
 
     @BeforeEach
-    public void init(){
+    public void init() {
         validateTransactionAccount = new ValidateTransactionAccount(accountRepository);
     }
 
 
     @Test
     @DisplayName("Test Transaction Account Success")
-    public void testTransactionAccountSuccess(){
+    public void testTransactionAccountSuccess() {
         try {
             UUID accountId = UUID.randomUUID();
 
@@ -55,7 +55,7 @@ class ValidateTransactionAccountTest {
 
             validateTransactionAccount.validate(transaction);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }
@@ -64,7 +64,7 @@ class ValidateTransactionAccountTest {
 
     @Test
     @DisplayName("Test Account not informed")
-    public void testAccountNotInformed(){
+    public void testAccountNotInformed() {
         try {
             Transaction transaction = Transaction.builder()
                     .amount(new BigDecimal("150.00"))
@@ -74,10 +74,10 @@ class ValidateTransactionAccountTest {
 
             fail("Fail test");
 
-        }catch (ConflictCustomException e){
+        } catch (ConflictCustomException e) {
             Assertions.assertEquals(ConflictCustomException.class, e.getClass());
-            Assertions.assertEquals("Conflict \"Account\" don't exist in database",e.getMessage());
-        }catch (Exception e){
+            Assertions.assertEquals("Conflict \"Account\" don't exist in database", e.getMessage());
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }
@@ -85,7 +85,7 @@ class ValidateTransactionAccountTest {
 
     @Test
     @DisplayName("Test Account If Exist")
-    public void testAccountNotExist(){
+    public void testAccountNotExist() {
         try {
 
             Account account = Account.builder().id(UUID.randomUUID())
@@ -100,10 +100,10 @@ class ValidateTransactionAccountTest {
 
             fail("Fail test");
 
-        }catch (ConflictCustomException e){
+        } catch (ConflictCustomException e) {
             Assertions.assertEquals(ConflictCustomException.class, e.getClass());
-            Assertions.assertEquals("Conflict \"Account\" don't exist in database",e.getMessage());
-        }catch (Exception e){
+            Assertions.assertEquals("Conflict \"Account\" don't exist in database", e.getMessage());
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }

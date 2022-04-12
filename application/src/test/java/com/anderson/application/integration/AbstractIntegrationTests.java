@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.jdbc.Sql;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -68,44 +67,4 @@ public class AbstractIntegrationTests {
         }
     }
 
-
 }
-
-//
-//import org.junit.jupiter.api.Assertions;
-//import org.junit.jupiter.api.Test;
-//#if($hasMocks)
-//import org.junit.jupiter.api.BeforeEach;
-//import org.mockito.InjectMocks;
-//import org.mockito.Mock;
-//import org.mockito.MockitoAnnotations;
-////import static org.mockito.Mockito.*;
-//#end
-//        #parse("File Header.java")
-//class ${CLASS_NAME} {
-//        #renderMockedFields($TESTED_CLASS.fields)
-//        #renderTestSubjectInit($TESTED_CLASS,$TestSubjectUtils.hasTestableInstanceMethod($TESTED_CLASS.methods),$hasMocks)
-//        #if($hasMocks)
-//
-//@BeforeEach
-//    void setUp() {
-//            MockitoAnnotations.initMocks(this);
-//            }
-//            #end
-//            #foreach($method in $TESTED_CLASS.methods)
-//            #if($TestSubjectUtils.shouldBeTested($method))
-//
-//@Test
-//    void #renderTestMethodName($method.name)(){
-//            #if($MockitoMockBuilder.shouldStub($method,$TESTED_CLASS.fields))
-//            #renderMockStubs($method,$TESTED_CLASS.fields)
-//
-//            #end
-//            #renderMethodCall($method,$TESTED_CLASS.name)
-//            #if($method.hasReturn())        Assertions.#renderJUnitAssert($method)#end
-//            }
-//            #end
-//            #end
-//            }
-//
-//            #parse("TestMe Footer.java")

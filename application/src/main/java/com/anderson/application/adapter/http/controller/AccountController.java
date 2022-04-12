@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
+import java.util.UUID;
 
 @Slf4j
 @Validated
@@ -35,7 +36,7 @@ public class AccountController {
             @Valid @Pattern(regexp = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
                     message = "UUID Invalid") @PathVariable("accountId") String accountId) {
 
-        Account account = accountService.findByID(accountId).orElseThrow(NotFoundCustomException::new);
+        Account account = accountService.findByID(UUID.fromString(accountId)).orElseThrow(NotFoundCustomException::new);
 
         return ResponseEntity.ok(AccountMapper.toAccountDTO(account));
     }

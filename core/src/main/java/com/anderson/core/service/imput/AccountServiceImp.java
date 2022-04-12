@@ -30,7 +30,7 @@ public class AccountServiceImp implements AccountService {
     }
 
     @Override
-    public Optional<Account> findByID(String uuid) {
-        return accountRepository.findBy(UUID.fromString(uuid));
+    public Optional<Account> findByID(UUID accountId) {
+        return accountRepository.findBy(accountId);
     }
 }

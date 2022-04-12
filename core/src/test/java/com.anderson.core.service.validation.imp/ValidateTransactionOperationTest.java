@@ -20,14 +20,14 @@ class ValidateTransactionOperationTest {
     private ValidateTransactionOperation validateTransactionOperation;
 
     @BeforeEach
-    public void init(){
+    public void init() {
         validateTransactionOperation = new ValidateTransactionOperation();
     }
 
 
     @Test
     @DisplayName("Test Transaction operation Success")
-    public void testTransactionOperationSuccess(){
+    public void testTransactionOperationSuccess() {
         try {
 
             Transaction transaction = Transaction.builder()
@@ -36,7 +36,7 @@ class ValidateTransactionOperationTest {
 
             validateTransactionOperation.validate(transaction);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }
@@ -44,7 +44,7 @@ class ValidateTransactionOperationTest {
 
     @Test
     @DisplayName("Test Transaction operation invalid")
-    public void testTransactionOperationInvalid(){
+    public void testTransactionOperationInvalid() {
         try {
             Transaction transaction = Transaction.builder()
                     .amount(new BigDecimal("150.00"))
@@ -52,9 +52,9 @@ class ValidateTransactionOperationTest {
 
             validateTransactionOperation.validate(transaction);
             fail("Fail test");
-        }catch (BadRequestCustomException e){
+        } catch (BadRequestCustomException e) {
             Assertions.assertEquals("Operation don't informed", e.getMessage());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             fail("Fail test");
         }
