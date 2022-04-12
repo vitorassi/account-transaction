@@ -21,6 +21,7 @@ services:
       - db_postgres
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db_postgres:5432/postgres
+      - SPRING_PROFILES_ACTIVE=des
 
 volumes:
   database-data:

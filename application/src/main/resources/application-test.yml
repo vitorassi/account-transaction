@@ -27,8 +27,7 @@ spring:
     console.enabled: true
     console:
       path: /h2-ui
-#  profile:
-#    active: local
+
 logging:
   level:
     root: INFO

@@ -7,12 +7,17 @@ import com.anderson.core.service.out.AccountRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import com.anderson.core.service.internal.Validation;
 import org.mockito.Mockito;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class AccountServiceImpTest {
@@ -32,12 +37,15 @@ class AccountServiceImpTest {
 
     @Test
     public void testSave(){
-
         accountService.save(Account.builder().documentNumber("1234").build());
-        Mockito.verify(accountRepository.save(any()), Mockito.times(1));
-
-
+        verify(validation, times(1)).validate(any(Account.class));
+        verify(accountRepository, times(1)).save(any(Account.class));
     }
 
+    @Test
+    public void testfindByID(){
+        accountService.findByID(UUID.randomUUID().toString());
+        verify(accountRepository, times(1)).findBy(any(UUID.class));
+    }
 
 }
