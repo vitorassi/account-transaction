@@ -1,5 +1,6 @@
 package com.anderson.application.mapper;
 
+import com.anderson.application.adapter.http.dto.OperationDto;
 import com.anderson.application.adapter.http.dto.TransactionCreateDTO;
 import com.anderson.application.adapter.http.dto.TransactionDTO;
 import com.anderson.core.model.Operation;
@@ -24,7 +25,7 @@ public class TransactionMapper {
         return Transaction.builder()
                 .accountId(transactionDTO.getAccountId())
                 .amount(transactionDTO.getAmount())
-                .operation(Operation.valueOfByName(transactionDTO.getOperation()))
+                .operation(Operation.valueOfByName(transactionDTO.getOperation().name()))
                 .build();
     }
 

@@ -10,19 +10,19 @@ services:
       - "15432:5432"
     volumes:
       - /home/oem/projetos_dev/demo-postgres/infra-docker/data
-
-  api_transaction:
-    container_name: app_transaction
-    build: .
-    restart: always
-    ports:
-      - "8181:8181"
-    depends_on:
-      - db_postgres
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_postgres:5432/postgres
-      - SPRING_PROFILES_ACTIVE=des
-
+#
+#  api_transaction:
+#    container_name: app_transaction
+#    build: .
+#    restart: always
+#    ports:
+#      - "8181:8181"
+#    depends_on:
+#      - db_postgres
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_postgres:5432/postgres
+#      - SPRING_PROFILES_ACTIVE=des
+#
 volumes:
   database-data:
 

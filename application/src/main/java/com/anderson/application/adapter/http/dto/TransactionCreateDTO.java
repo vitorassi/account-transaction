@@ -16,7 +16,7 @@ import java.util.UUID;
 public class TransactionCreateDTO {
 
     private UUID accountId;
-    private String operation;
+    private OperationDto operation;
     private BigDecimal amount;
 
 }
