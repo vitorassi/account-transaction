@@ -3,6 +3,7 @@ package com.anderson.adapter.database.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 
@@ -22,4 +23,6 @@ public class AccountEntity {
     @Column(unique = true, nullable = false)
     private String documentNumber;
 
+    @Column(nullable = false)
+    private BigDecimal availableCreditLimit;
 }

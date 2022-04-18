@@ -44,10 +44,12 @@ public class ConfigBeanInject {
     @Bean
     public TransactionService transactionService(Validation validationTransactionService,
                                                  TransactionRepository transactionRepository,
-                                                 CalculateTransactionService calculateTransactionService) {
+                                                 CalculateTransactionService calculateTransactionService,
+                                                 AccountRepository accountRepository) {
         return new TransactionServiceImp(transactionRepository,
                 validationTransactionService,
-                calculateTransactionService);
+                calculateTransactionService,
+                accountRepository);
     }
 
 

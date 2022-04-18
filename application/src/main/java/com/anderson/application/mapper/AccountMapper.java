@@ -13,12 +13,14 @@ public class AccountMapper {
         return AccountDTO.builder()
                 .id(account.getId().toString())
                 .documentNumber(account.getDocumentNumber())
+                .availableCreditLimit(account.getAvailableCreditLimit())
                 .build();
     }
 
     public static Account toAccount(AccountCreateDTO account) {
         return Account.builder()
                 .documentNumber(account.getDocumentNumber())
+                .availableCreditLimit(account.getAvailableCreditLimit())
                 .build();
     }
 }

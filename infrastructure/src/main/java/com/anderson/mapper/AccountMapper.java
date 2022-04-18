@@ -12,6 +12,7 @@ public final class AccountMapper {
         return Account.builder()
                 .id(entity.getId())
                 .documentNumber(entity.getDocumentNumber())
+                .availableCreditLimit(entity.getAvailableCreditLimit())
                 .build();
     }
 
@@ -19,6 +20,7 @@ public final class AccountMapper {
         return AccountEntity.builder()
                 .id(account.getId())
                 .documentNumber(account.getDocumentNumber())
+                .availableCreditLimit(account.getAvailableCreditLimit())
                 .build();
     }
 

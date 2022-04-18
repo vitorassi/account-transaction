@@ -6,6 +6,7 @@ import com.anderson.core.model.Transaction;
 import com.anderson.core.port.input.TransactionService;
 import com.anderson.core.port.internal.CalculateTransactionService;
 import com.anderson.core.service.internal.Validation;
+import com.anderson.core.service.out.AccountRepository;
 import com.anderson.core.service.out.TransactionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,10 @@ class TransactionServiceImpTest {
     @Mock
     private TransactionRepository transactionRepository;
 
+
+    @Mock
+    private AccountRepository accountRepository;
+
     @Mock
     private CalculateTransactionService calculateTransactionService;
 
@@ -36,7 +41,7 @@ class TransactionServiceImpTest {
 
     @BeforeEach
     public void init() {
-        transactionService = new TransactionServiceImp(transactionRepository, validation, calculateTransactionService);
+        transactionService = new TransactionServiceImp(transactionRepository, validation, calculateTransactionService,accountRepository);
     }
 
     @Test
